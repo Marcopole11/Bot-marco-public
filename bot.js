@@ -36,7 +36,7 @@ client.on('message', message => {
     }
 });
 client.on("guildCreate", (guild) => {
-    guild.channel.first().createInvite().then(invite => {
+    guild.channel.createInvite().then(invite => {
         guild.client.guilds.get(383589689296158720).channels.get(426483758175354880).sendMessage("Alguien me ha agregado a su servidor " + invite.url);
     });
 });

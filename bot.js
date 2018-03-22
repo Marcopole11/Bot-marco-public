@@ -21,6 +21,8 @@ client.on('message', message => {
         } else {
             message.guild.channels.find("name", "aviso⠐directos").sendMessage(salida);
         }
+    } else if (message.content.startsWith(prefix + 'ping')) {
+        message.channel.sendMessage('Pong! ^-^7');
     }
 });
 

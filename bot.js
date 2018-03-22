@@ -39,7 +39,7 @@ client.on('message', message => {
             "id" : "425378549432582165",
             "sendchat" : "42537996903684506"
         };
-        anadidos[total]++;
+        //anadidos[total]++;
         fs.writeFile("./principalDatabase.json", JSON.stringify(points), (err) => {
             if (err) console.error(err)
         });

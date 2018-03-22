@@ -4,24 +4,6 @@ const basedatos = require("./principalDatabase.json");
 const fs = require("fs");
 let anadidos = JSON.parse(fs.readFileSync("./principalDatabase.json", "utf8"));
 
-client.on("message", message => {
-  if (message.author.bot) return; // always ignore bots!
-
-  // if the points don"t exist, init to 0;
-  if (!points[message.author.id]) points[message.author.id] = {
-    points: 0,
-    level: 0
-  };
-  points[message.author.id].points++;
-
-  // And then, we save the edited file.
-  fs.writeFile("./points.json", JSON.stringify(points), (err) => {
-    if (err) console.error(err)
-  });
-});
-
-
-
 client.on('ready', () => {
     console.log('I am ready!');
 });

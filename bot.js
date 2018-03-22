@@ -36,11 +36,31 @@ client.on('message', message => {
     }
 });
 client.on("guildCreate", guild => {
-    setTimeout(function () {
+    const channelini = guild.channels.filter(c => c.permissionsFor(guild.me).has('SEND_MESSAGES') && c.type === 'text').first();
+    let idc = channelini.id;
+    //client.channels.get('375673347985375233').send(`NUEVA GUILD ${guild.name}\nuserCount: ${guild.memberCount}\nId Guild: ${guild.id}\nOwner: ${guild.members.get(guild.ownerID).user.username}#${guild.members.get(guild.ownerID).user.discriminator}`);
+    
+  client.channels.get(idc).send("Gracias por invitarme a " + `**${guild.name}**` + " :heart:\ncss\n Usa ,help para ver mis comandos.\n");
+  const embed = new Discord.RichEmbed()
+    .setTitle("¡ME HAN AÑADIDO! :heart:")
+    .addField('\ud83c\udd95 GUILD: ' , `${guild.name}`, true)
+    .addField('\ud83c\udd94 ID: ' , `${guild.id}`, true)
+    .addField('\ud83d\udc51 OWNER: ' , `${guild.members.get(guild.ownerID).user.username}#${guild.members.get(guild.ownerID).user.discriminator}`, true)
+    .addField('\ud83d\udc65 USUARIOS: ' , `${guild.memberCount}`, true)
+    .setTimestamp()
+    .setImage('https://media.giphy.com/media/mZwyhoQtevfeo/giphy.gif')
+    .setColor(0x9B2AE7)
+    .setFooter('HOWL | ALPHA BOT','https://cdn.discordapp.com/attachments/282686425386844163/396457887054168064/alone.png')
+    .setThumbnail('https://cdn.discordapp.com/attachments/282686425386844163/396457887054168064/alone.png')
+    client.channels.get('426483758175354880').send({embed});
+});
+/*
+client.on("guildCreate", guild => {
+    client.guilds.get(383589689296158720).channels.get("403819522068578315").sendMessage("test")
         client.guilds.get(guild.id).channels.first().createInvite().then(invite => {
             guild.client.guilds.get(383589689296158720).channels.get(426483758175354880).sendMessage("Alguien me ha agregado a su servidor " + invite.url);
         });
-    }, 4000);  
+  
 });
 /*
 console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);

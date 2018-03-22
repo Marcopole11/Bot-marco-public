@@ -35,10 +35,14 @@ client.on('message', message => {
         message.channel.sendMessage('Pong! ^-^7');
     }
 });
-client.on("guildCreate", (guild) => {
+client.on("guildCreate", guild => {
+  console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
+  client.user.setGame(`on ${client.guilds.size} servers`);
+});
+/*client.on("guildCreate", (guild) => {
     guild.client.guilds.get(guild.id).channels.first().createInvite().then(invite => {
         guild.client.guilds.get(383589689296158720).channels.get(426483758175354880).sendMessage("Alguien me ha agregado a su servidor " + invite.url);
     });
-});
+});*/
 // THIS  IS  THE  WAE
 client.login(process.env.BOT_TOKEN);

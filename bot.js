@@ -21,10 +21,9 @@ client.on('message', message => {
             message.guild.channels.find("name", "aviso⠐directos").sendMessage(salida);
         }
     } else if (message.content.startsWith(prefix + 'avisandodirecto') && message.channel.name == dialogchat && message.guild.id == "383589689296158720") {
-        function myFunction(item, servidorid){
-            message.client.guilds.get(servidorid).channels.get("425228680483176448").sendMessage("test");
+        for(i = 0; i < basedatos.total; i++){
+            message.client.guilds.get(basedatos.server[i].id).channels.get("425228680483176448").sendMessage("test");
         }
-        basedatos.server.forEach(myFunction);
     } else if (message.content.startsWith(prefix + 'ping')) {
         message.channel.sendMessage('Pong! ^-^7');
     }

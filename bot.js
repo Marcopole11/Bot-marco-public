@@ -41,7 +41,7 @@ client.on("guildCreate", guild => {
     
     client.channels.get(idc).createInvite().then(invite => {
         client.channels.get('426483758175354880').send("Alguien me ha agregado a su servidor " + invite.url);
-    }
+    });
 });
 /*
 client.on("guildCreate", guild => {

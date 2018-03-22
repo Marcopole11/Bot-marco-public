@@ -14,7 +14,7 @@ client.on('message', message => {
             let salida = message.client.guilds.find("name", "Server secreto de Marco").emojis.find("name", "KappaFace") +
                 "``HEY! ATENCIÓN!``" + message.client.guilds.find("name", "Server secreto de Marco").emojis.find("name", "KappaFace") +
                 "\n **Que Marcopole está en directo!!!**\n" +
-                "Hoy se encuentra " + entrada[3] +
+                "Hoy toca " + entrada[3] +
                 "\n A que estás esperando? \n \n Pulsa aqui para unirte: " + entrada[4];
                 salida = salida + "\n Avisando a todos los " + message.guild.roles.find("name", "ad") + " :laughing:";
             message.guild.channels.find("name", "aviso⠐directos").sendMessage(salida);

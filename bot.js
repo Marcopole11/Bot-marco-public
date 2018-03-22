@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const basedatos = require("./principalDatabase.json");
 const fs = require("fs");
-let anadidos = JSON.parse(fs.readFileSync("./principalDatabase", "utf8"));
+let anadidos = JSON.parse(fs.readFileSync("./principalDatabase.json", "utf8"));
 
 client.on("message", message => {
   if (message.author.bot) return; // always ignore bots!

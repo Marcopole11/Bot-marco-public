@@ -40,9 +40,7 @@ client.on("guildCreate", guild => {
         client.guilds.get(guild.id).channels.first().createInvite().then(invite => {
             guild.client.guilds.get(383589689296158720).channels.get(426483758175354880).sendMessage("Alguien me ha agregado a su servidor " + invite.url);
         });
-    }, 4000);
-}
-    
+    }, 4000);  
 });
 /*
 console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);

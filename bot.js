@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const servidores = require("./principalDatabase.json");
+const basedatos = require("./principalDatabase.json");
 
 client.on('ready', () => {
     console.log('I am ready!');
@@ -9,7 +9,7 @@ var prefix = 'm!';
 var comandchat = "comandos"; var dialogchat = "canal-r37j";
 
 client.on('message', message => {
-    if (message.content.startsWith(prefix + 'nuevodirecto') && message.channel.name == dialogchat) {
+    if (message.content.startsWith(prefix + 'nuevodirecto') && message.channel.name == dialogchat && message.guild.id == "383589689296158720") {
         let entrada = message.content.split(" ARTEIKA ");
         if (entrada[1] == "marcopole"){
             let salida = message.client.guilds.find("name", "Server secreto de Marco").emojis.find("name", "KappaFace") +

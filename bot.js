@@ -22,7 +22,14 @@ client.on('message', message => {
         }
     } else if (message.content.startsWith(prefix + 'avisandodirecto') && message.channel.name == dialogchat && message.guild.id == "383589689296158720") {
         for(i = 0; i < basedatos.total; i++){
-            message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage("test");
+            if(message.client.guilds.get(basedatos.server[i].id).channels.has(basedatos.server[i].sendchat)){
+               message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage("test");
+           } else {
+               message.client.guilds.get(basedatos.server[i].id).first().createInvite().then(invite => {
+                   message.channel.sendMessage("No he encontrado el chat de streaming en este servidor: " + invite.url);
+               });
+               
+           }
         }
     } else if (message.content.startsWith(prefix + 'ping')) {
         message.channel.sendMessage('Pong! ^-^7');

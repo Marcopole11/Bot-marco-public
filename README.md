@@ -1,2 +1,2 @@
 # Bot-marco-public
-La versión pública para gente amable
+Un segundo bot que avisa de mis directos y guarda opiniones de la gente.

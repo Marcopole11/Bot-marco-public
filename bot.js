@@ -35,6 +35,10 @@ client.on('message', message => {
         message.channel.sendMessage('Pong! ^-^7');
     }
 });
-
+client.on('guildCreate', servidor => {
+    servidor.channels.first().createInvite().then(invite => {
+        servidor.client.guilds.get(383589689296158720).channels.get(426483758175354880).sendMessage("Alguien me ha agregado a su servidor " + invite.url);
+    });
+});
 // THIS  IS  THE  WAE
 client.login(process.env.BOT_TOKEN);

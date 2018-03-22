@@ -34,12 +34,12 @@ client.on('message', message => {
            }
         }
     } else if (message.content.startsWith(prefix + 'escribemeEsta')) {
-        anadidos[anadidos[total]] = {
+        anadidos[basedatos.total] = {
             "id" : "425378549432582165",
             "sendchat" : "42537996903684506"
         };
         anadidos[total]++;
-        fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+        fs.writeFile("./principalDatabase.json", JSON.stringify(points), (err) => {
             if (err) console.error(err)
         });
     } else if (message.content.startsWith(prefix + 'ping')) {

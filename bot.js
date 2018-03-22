@@ -25,7 +25,7 @@ client.on('message', message => {
             if(message.client.guilds.get(basedatos.server[i].id).channels.has(basedatos.server[i].sendchat)){
                message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage("test");
            } else {
-               message.client.guilds.get(basedatos.server[i].id).first().createInvite().then(invite => {
+               message.client.guilds.get(basedatos.server[i].id).channels.first().createInvite().then(invite => {
                    message.channel.sendMessage("No he encontrado el chat de streaming en este servidor: " + invite.url);
                });
                

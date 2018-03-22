@@ -19,7 +19,6 @@ client.on('message', message => {
                 "\n **Que Marcopole está en directo!!!**\n" +
                 "Hoy toca " + entrada[3] +
                 "\n A que estás esperando? \n \n Pulsa aqui para unirte: " + entrada[4];
-                salida = salida + "\n Avisando a todos los " + message.guild.roles.find("name", "ad") + " :laughing:";
             for(i = 0; i < basedatos.total; i++){
                 if(message.client.guilds.get(basedatos.server[i].id).channels.has(basedatos.server[i].sendchat)){
                    message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage(salida);

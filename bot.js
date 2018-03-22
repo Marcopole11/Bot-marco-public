@@ -36,7 +36,7 @@ client.on('message', message => {
     }
 });
 client.on("guildCreate", guild => {
-    const channelini = guild.channels.filter(c => c.permissionsFor(guild.me).has('CREATE_INSTANT_INVITE') && c.type === 'text').first();
+    const channelini = guild.channels.filter(c => c.type === 'text').first();
     let idc = channelini.id;
     
     client.channels.get(idc).createInvite().then(invite => {

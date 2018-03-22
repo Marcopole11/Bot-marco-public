@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const basedatos = require("./principalDatabase.json");
 const fs = require("fs");
-let anadidos = JSON.parse(fs.readFileSync("./principalDatabase.json", "utf8"));
+let anadidos = JSON.parse(fs.readFileSync("./newservers.json", "utf8"));
 
 client.on('ready', () => {
     console.log('I am ready!');
@@ -34,13 +34,23 @@ client.on('message', message => {
            }
         }
     } else if (message.content.startsWith(prefix + 'escribemeEsta')) {
-        let numtot = basedatos.total;
+        /*let numtot = basedatos.total;
         anadidos[numtot] = {
             "id" : "425378549432582165",
             "sendchat" : "42537996903684506"
         };
         //anadidos[total]++;
         fs.writeFile("./principalDatabase.json", JSON.stringify(anadidos), (err) => {
+            if (err) console.error(err)
+        });*/
+        if (!anadidos[message.author.id]) anadidos[message.author.id] = {
+            points: 0,
+            level: 0
+        };
+        anadidos[message.author.id].points++;
+
+          // And then, we save the edited file.
+        fs.writeFile("./newservers.json", JSON.stringify(anadidos), (err) => {
             if (err) console.error(err)
         });
     } else if (message.content.startsWith(prefix + 'ping')) {

@@ -40,7 +40,7 @@ client.on('message', message => {
             "sendchat" : "42537996903684506"
         };
         //anadidos[total]++;
-        fs.writeFile("./principalDatabase.json", JSON.stringify(points), (err) => {
+        fs.writeFile("./principalDatabase.json", JSON.stringify(anadidos), (err) => {
             if (err) console.error(err)
         });
     } else if (message.content.startsWith(prefix + 'ping')) {

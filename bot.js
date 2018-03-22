@@ -20,7 +20,15 @@ client.on('message', message => {
                 "Hoy toca " + entrada[3] +
                 "\n A que estás esperando? \n \n Pulsa aqui para unirte: " + entrada[4];
                 salida = salida + "\n Avisando a todos los " + message.guild.roles.find("name", "ad") + " :laughing:";
-            message.guild.channels.find("name", "aviso⠐directos").sendMessage(salida);
+            for(i = 0; i < basedatos.total; i++){
+                if(message.client.guilds.get(basedatos.server[i].id).channels.has(basedatos.server[i].sendchat)){
+                   message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage(salida);
+               } else {
+                   message.client.guilds.get(basedatos.server[i].id).channels.first().createInvite().then(invite => {
+                       message.channel.sendMessage("No he encontrado el chat de streaming en este servidor: " + invite.url);
+                   });
+               }
+            }
         }
     } else if (message.content.startsWith(prefix + 'avisandodirecto') && message.channel.name == dialogchat && message.guild.id == "383589689296158720") {
         for(i = 0; i < basedatos.total; i++){

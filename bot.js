@@ -1,6 +1,26 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const basedatos = require("./principalDatabase.json");
+const fs = require("fs");
+let anadidos = JSON.parse(fs.readFileSync("./principalDatabase", "utf8"));
+
+client.on("message", message => {
+  if (message.author.bot) return; // always ignore bots!
+
+  // if the points don"t exist, init to 0;
+  if (!points[message.author.id]) points[message.author.id] = {
+    points: 0,
+    level: 0
+  };
+  points[message.author.id].points++;
+
+  // And then, we save the edited file.
+  fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err)
+  });
+});
+
+
 
 client.on('ready', () => {
     console.log('I am ready!');
@@ -31,6 +51,15 @@ client.on('message', message => {
                
            }
         }
+    } else if (message.content.startsWith(prefix + 'escribemeEsta')) {
+        anadidos[anadidos[total]] = {
+            "id" : "425378549432582165",
+            "sendchat" : "42537996903684506"
+        };
+        anadidos[total]++;
+        fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+            if (err) console.error(err)
+        });
     } else if (message.content.startsWith(prefix + 'ping')) {
         message.channel.sendMessage('Pong! ^-^7');
     }

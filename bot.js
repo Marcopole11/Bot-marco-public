@@ -20,6 +20,10 @@ client.on('message', message => {
                 salida = salida + "\n Avisando a todos los " + message.guild.roles.find("name", "ad") + " :laughing:";
             message.guild.channels.find("name", "aviso⠐directos").sendMessage(salida);
         }
+    } else if (message.content.startsWith(prefix + 'avisandodirecto') && message.channel.name == dialogchat && message.guild.id == "383589689296158720") {
+        basedatos.server.forEach(function(item, servidorid){
+            message.client.guilds.get(servidorid).channels.get("425228680483176448").sendMessage("test");
+        });
     } else if (message.content.startsWith(prefix + 'ping')) {
         message.channel.sendMessage('Pong! ^-^7');
     }

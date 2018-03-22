@@ -34,7 +34,8 @@ client.on('message', message => {
            }
         }
     } else if (message.content.startsWith(prefix + 'escribemeEsta')) {
-        anadidos[basedatos.total] = {
+        let numtot = basedatos.total;
+        anadidos[numtot] = {
             "id" : "425378549432582165",
             "sendchat" : "42537996903684506"
         };

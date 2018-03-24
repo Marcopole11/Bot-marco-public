@@ -89,7 +89,7 @@ client.on('message', message => {
         let kuzma = "ERROR";
         if(message.client.guilds.has(entrada[1])){
             kuzma = "Lista de chats de " + message.client.guilds.get(entrada[1]).name + ":";
-            message.client.guilds.get(entrada[1]).channels.forEach(function(value, key) {
+            message.client.guilds.get(entrada[1]).channels.filter(c => c.type === 'text').forEach(function(value, key) {
                 kuzma = kuzma + value.name + " ["+key+"]";
             });
         } else {

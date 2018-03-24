@@ -20,25 +20,36 @@ client.on('message', message => {
                 "Hoy toca " + entrada[3] +
                 "\n A que estás esperando? \n \n Pulsa aqui para unirte: " + entrada[4];
             for(i = 0; i < basedatos.total; i++){
-                if(message.client.guilds.get(basedatos.server[i].id).channels.has(basedatos.server[i].sendchat)){
-                   message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage(salida);
-               } else {
-                   message.client.guilds.get(basedatos.server[i].id).channels.first().createInvite().then(invite => {
-                       message.channel.sendMessage("No he encontrado el chat de streaming en este servidor: " + invite.url);
-                   });
-               }
+                if(message.client.guilds.has(basedatos.server[i].id)){
+                    if(basedatos.server[i].sendchat == "ninguno"){
+                        message.client.guilds.get(basedatos.server[i].id).channels.filter(c => c.permissionsFor(guild.me).has('SEND_MESSAGES') && c.type === 'text').first().sendMessage(salida);
+                    } else if(message.client.guilds.get(basedatos.server[i].id).channels.has(basedatos.server[i].sendchat)){
+                        message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage(salida);
+                    } else {
+                        message.client.guilds.get(basedatos.server[i].id).channels.first().createInvite().then(invite => {
+                            message.channel.sendMessage("No he encontrado el chat de streaming en este servidor: " + invite.url);
+                        });
+                    }
+                } else {
+                    message.channel.sendMessage(basedatos.server[i].name + " ya no se encuentra en mi lista.");
+                }
             }
         }
     } else if (message.content.startsWith(prefix + 'avisandodirecto') && message.channel.name == dialogchat && message.guild.id == "383589689296158720") {
         for(i = 0; i < basedatos.total; i++){
-            if(message.client.guilds.get(basedatos.server[i].id).channels.has(basedatos.server[i].sendchat)){
-               message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage("test");
-           } else {
-               message.client.guilds.get(basedatos.server[i].id).channels.first().createInvite().then(invite => {
-                   message.channel.sendMessage("No he encontrado el chat de streaming en este servidor: " + invite.url);
-               });
-               
-           }
+            if(message.client.guilds.has(basedatos.server[i].id)){
+                if(basedatos.server[i].sendchat == "ninguno"){
+                    message.client.guilds.get(basedatos.server[i].id).channels.filter(c => c.permissionsFor(guild.me).has('SEND_MESSAGES') && c.type === 'text').first().sendMessage(salida);
+                } else if(message.client.guilds.get(basedatos.server[i].id).channels.has(basedatos.server[i].sendchat)){
+                    message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage(salida);
+                } else {
+                    message.client.guilds.get(basedatos.server[i].id).channels.first().createInvite().then(invite => {
+                        message.channel.sendMessage("No he encontrado el chat de streaming en este servidor: " + invite.url);
+                    });
+                }
+            } else {
+                message.channel.sendMessage(basedatos.server[i].name + " ya no se encuentra en mi lista.");
+            }
         }
     } else if (message.content.startsWith(prefix + 'escribemeEsta')) {
         /*let numtot = basedatos.total;

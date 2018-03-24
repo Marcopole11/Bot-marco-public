@@ -63,21 +63,19 @@ client.on('message', message => {
 //KUZMA AREA!!!!!!!!
     } else if (message.content.startsWith(prefix + 'serverlist')) {
         let kuzma = "Me han añadido en " + message.client.guilds.size + " servidores: \n";
-        message.client.guilds.forEach(function(value, key) {
-          kuzma = kuzma + " ID [" + key + "], nombre [" + value.name +"]";
-        });
-        message.channel.sendMessage(kuzma);
-    } else if (message.content.startsWith(prefix + 'serverlist')) {
-        let kuzma = "Servidores: ";
         let listado = "no";
         message.client.guilds.forEach(function(value, key) {
-            if(basedatos.server.some(item => item.id === 'Blofeld')){
+            if(basedatos.server.some(item => item.id === key)){
                 listado = "si";
             } else {
                 listado = "no";
             }
           kuzma = kuzma + " ID [" + key + "], nombre [" + value.name +"], listado [" + listado +"] \n";
         });
+        message.channel.sendMessage(kuzma);
+    } else if (message.content.startsWith(prefix + 'serverlist')) {
+        let kuzma = "Servidores: ";
+        
         message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'ping')) {
         message.channel.sendMessage('Pong! ^-^7');

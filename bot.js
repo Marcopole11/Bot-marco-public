@@ -91,7 +91,7 @@ client.on('message', message => {
             kuzma = "Lista de chats de " + message.client.guilds.get(entrada[1]).name + ":";
             message.client.guilds.get(entrada[1]).channels.forEach(function(value, key) {
                 kuzma = kuzma + value.name + " ["+key+"]";
-            }
+            });
         } else {
             kuzma = "no he encontrado ningún servidor con la ID "+ entrada[1];
         }

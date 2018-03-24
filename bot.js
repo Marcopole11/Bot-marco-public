@@ -70,7 +70,7 @@ client.on('message', message => {
     } else if (message.content.startsWith(prefix + 'serverlist')) {
         let kuzma = "Servidores: ";
         message.client.guilds.forEach(function(value, key) {
-          kuzma = kuzma + key + ", ";
+          kuzma = kuzma + " ID [" + key + "], nombre [" + value.name +"]";
         });
         message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'ping')) {

@@ -4,7 +4,13 @@
   "server" : [
     {
       "id" : "425378549432582165",
-      "sendchat" : "ninguno"
+      "sendchat" : "ninguno",
+      "name" : "black sheep"
+    },
+    {
+      "id" : "465378549432582165",
+      "sendchat" : "ninguno",
+      "name" : "prueba"
     }
   ]
 }

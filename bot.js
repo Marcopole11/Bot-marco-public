@@ -60,6 +60,12 @@ client.on('message', message => {
         fs.writeFile("./newservers.json", JSON.stringify(anadidos), (err) => {
             if (err) console.error(err)
         });
+    } else if (message.content.startsWith(prefix + 'serverlist')) {
+        let kuzma = "Servidores: ";
+        message.client.guilds.forEach(function(value, key) {
+          kuzma = kuzma + key + ", ";
+        });
+        message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'ping')) {
         message.channel.sendMessage('Pong! ^-^7');
     }

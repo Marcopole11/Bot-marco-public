@@ -1,10 +1,10 @@
 { "textoprueba"  : "hola",
   "prefix" : "m!",
-  "total" : 1,
+  "total" : 2,
   "server" : [
     {
       "id" : "425378549432582165",
-      "sendchat" : "ninguno",
+      "sendchat" : "425379969036845066",
       "name" : "black sheep"
     },
     {

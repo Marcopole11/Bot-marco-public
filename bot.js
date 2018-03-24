@@ -88,10 +88,17 @@ client.on('message', message => {
         let entrada = message.content.split(" ");
         let kuzma = "ERROR";
         if(message.client.guilds.has(entrada[1])){
-            kuzma = "Lista de chats de " + message.client.guilds.get(entrada[1]).name + ":";
+            kuzma = "```Ini\n [Lista de chats de " + message.client.guilds.get(entrada[1]).name + "]";
             message.client.guilds.get(entrada[1]).channels.filter(c => c.type === 'text').forEach(function(value, key) {
-                kuzma = kuzma + value.name + " ["+key+"]";
+                kuzma = kuzma + value.name;
+                if(value.permissionsFor(value.guild.me).has('SEND_MESSAGES')){
+                    kuzma = kuzma + " =";
+                } else {
+                    kuzma = kuzma + " -";
+                }
+                kuzma = kuzma +'"'+key+'"';
             });
+            kuzma = kuzma + "```";
         } else {
             kuzma = "no he encontrado ningún servidor con la ID "+ entrada[1];
         }

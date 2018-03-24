@@ -88,7 +88,7 @@ client.on('message', message => {
         let entrada = message.content.split(" ");
         let kuzma = "ERROR";
         if(message.client.guilds.has(entrada[1])){
-            kuzma = "```Ini\n [Lista de chats de " + message.client.guilds.get(entrada[1]).name + "]";
+            kuzma = "```Ini\n [Lista de chats de " + message.client.guilds.get(entrada[1]).name + "]\n";
             message.client.guilds.get(entrada[1]).channels.filter(c => c.type === 'text').forEach(function(value, key) {
                 kuzma = kuzma + value.name;
                 if(value.permissionsFor(value.guild.me).has('SEND_MESSAGES')){
@@ -96,7 +96,7 @@ client.on('message', message => {
                 } else {
                     kuzma = kuzma + " -";
                 }
-                kuzma = kuzma +'"'+key+'"';
+                kuzma = kuzma +'"'+key+'"\n';
             });
             kuzma = kuzma + "```";
         } else {

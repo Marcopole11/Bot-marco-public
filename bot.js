@@ -93,10 +93,13 @@ client.on('message', message => {
                 kuzma = kuzma + value.name;
                 if(value.permissionsFor(value.guild.me).has('SEND_MESSAGES')){
                     kuzma = kuzma + " =";
+                    if(value.permissionsFor(value.guild.me).has('EMBED_LINKS') == false){
+                        kuzma = kuzma + "$";
+                    }
                 } else {
                     kuzma = kuzma + " -";
                 }
-                kuzma = kuzma +'"'+key+'"\n';
+                kuzma = kuzma +'{'+key+'}\n';
             });
             kuzma = kuzma + "```";
         } else {

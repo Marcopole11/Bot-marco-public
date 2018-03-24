@@ -64,7 +64,7 @@ client.on('message', message => {
     } else if (message.content.startsWith(prefix + 'serverlist')) {
         let kuzma = "Me han añadido en " + message.client.guilds.size + " servidores: \n";
         message.client.guilds.forEach(function(value, key) {
-          kuzma = kuzma + key + ", \n";
+          kuzma = kuzma + " ID [" + key + "], nombre [" + value.name +"]";
         });
         message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'serverlist')) {

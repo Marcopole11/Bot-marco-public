@@ -62,7 +62,7 @@ client.on('message', message => {
         });
 //KUZMA AREA!!!!!!!!
     } else if (message.content.startsWith(prefix + 'serverlist')) {
-        let kuzma = "Me han añadido en " + message.client.guilds.length + " servidores: \n";
+        let kuzma = "Me han añadido en " + message.client.guilds.size + " servidores: \n";
         message.client.guilds.forEach(function(value, key) {
           kuzma = kuzma + key + ", \n";
         });

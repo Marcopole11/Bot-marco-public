@@ -84,9 +84,17 @@ client.on('message', message => {
           kuzma = kuzma + " ID [" + key + "], nombre [" + value.name +"], listado [" + listado +"] \n";
         });
         message.channel.sendMessage(kuzma);
-    } else if (message.content.startsWith(prefix + 'serverlist')) {
-        let kuzma = "Servidores: ";
-        
+    } else if (message.content.startsWith(prefix + 'chatlist')) {
+        let entrada = message.content.split(" ");
+        let kuzma = "ERROR";
+        if(message.client.guilds.has(entrada[1])){
+            kuzma = "Lista de chats de " + message.client.guilds.get(entrada[1]).name + ":";
+            message.client.guilds.get(entrada[1]).channels.forEach(function(value, key) {
+                kuzma = kuzma + value.name + " ["+key+"]";
+            }
+        } else {
+            kuzma = "no he encontrado ningún servidor con la ID "+ entrada[1];
+        }
         message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'ping')) {
         message.channel.sendMessage('Pong! ^-^7');

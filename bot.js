@@ -69,8 +69,14 @@ client.on('message', message => {
         message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'serverlist')) {
         let kuzma = "Servidores: ";
+        let listado = "no";
         message.client.guilds.forEach(function(value, key) {
-          kuzma = kuzma + " ID [" + key + "], nombre [" + value.name +"]";
+            if(basedatos.server.some(item => item.id === 'Blofeld')){
+                listado = "si";
+            } else {
+                listado = "no";
+            }
+          kuzma = kuzma + " ID [" + key + "], nombre [" + value.name +"], listado [" + listado +"] \n";
         });
         message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'ping')) {

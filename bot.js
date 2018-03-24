@@ -39,9 +39,9 @@ client.on('message', message => {
         for(i = 0; i < basedatos.total; i++){
             if(message.client.guilds.has(basedatos.server[i].id)){
                 if(basedatos.server[i].sendchat == "ninguno"){
-                    message.client.guilds.get(basedatos.server[i].id).channels.filter(c => c.permissionsFor(guild.me).has('SEND_MESSAGES') && c.type === 'text').first().sendMessage(salida);
+                    message.client.guilds.get(basedatos.server[i].id).channels.filter(c => c.permissionsFor(guild.me).has('SEND_MESSAGES') && c.type === 'text').first().sendMessage("test");
                 } else if(message.client.guilds.get(basedatos.server[i].id).channels.has(basedatos.server[i].sendchat)){
-                    message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage(salida);
+                    message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage("test");
                 } else {
                     message.client.guilds.get(basedatos.server[i].id).channels.first().createInvite().then(invite => {
                         message.channel.sendMessage("No he encontrado el chat de streaming en este servidor: " + invite.url);

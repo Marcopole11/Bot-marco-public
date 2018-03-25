@@ -93,7 +93,7 @@ client.on('message', message => {
                     }
             });
         }
-        kuzma = kuzma + "```";
+        kuzma = kuzma + message.guild.id + "```";
         message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'chatlist')) {
         let entrada = message.content.split(" ");

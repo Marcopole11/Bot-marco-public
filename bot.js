@@ -86,7 +86,7 @@ client.on('message', message => {
         } else {
             message.client.guilds.forEach(function(value, key) {
                 kuzma = kuzma + key + " " + value.name;
-                    if(message.guild.id === key){
+                    if(message.guild.id == key){
                         kuzma = kuzma + "this \n";
                     } else {
                         kuzma = kuzma + "\n";

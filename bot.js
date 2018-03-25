@@ -73,16 +73,16 @@ client.on('message', message => {
         });
 //KUZMA AREA!!!!!!!!
     } else if (message.content.startsWith(prefix + 'serverlist')) {
-        let kuzma = "Me han añadido en " + message.client.guilds.size + " servidores: \n";
-        let listado = "no";
+        let kuzma = "```Haxe\n//Me han añadido en " + message.client.guilds.size + " servidores: \n";
         message.client.guilds.forEach(function(value, key) {
             if(basedatos.server.some(item => item.id === key)){
-                listado = "si";
+                kuzma = kuzma + ";in; ";
             } else {
-                listado = "no";
+                kuzma = kuzma + ":no: ";
             }
-          kuzma = kuzma + " ID [" + key + "], nombre [" + value.name +"], listado [" + listado +"] \n";
+          kuzma = kuzma + key + " " + value.name +"\n";
         });
+        kuzma = kuzma + "```";
         message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'chatlist')) {
         let entrada = message.content.split(" ");

@@ -22,7 +22,7 @@ client.on('message', message => {
             for(i = 0; i < basedatos.total; i++){
                 if(message.client.guilds.has(basedatos.server[i].id)){
                     if(basedatos.server[i].sendchat == "ninguno"){
-                        message.client.guilds.get(basedatos.server[i].id).channels.filter(c => c.permissionsFor(guild.me).has('SEND_MESSAGES') && c.type === 'text').first().sendMessage(salida);
+                        message.client.guilds.get(basedatos.server[i].id).channels.filter(c => c.permissionsFor(message.client.guilds.get(basedatos.server[i].id).me).has('SEND_MESSAGES') && c.type === 'text').first().sendMessage(salida);
                     } else if(message.client.guilds.get(basedatos.server[i].id).channels.has(basedatos.server[i].sendchat)){
                         message.client.guilds.get(basedatos.server[i].id).channels.get(basedatos.server[i].sendchat).sendMessage(salida);
                     } else {
@@ -74,14 +74,25 @@ client.on('message', message => {
 //KUZMA AREA!!!!!!!!
     } else if (message.content.startsWith(prefix + 'serverlist')) {
         let kuzma = "```Haxe\n//Me han añadido en " + message.client.guilds.size + " servidores: \n";
-        message.client.guilds.forEach(function(value, key) {
-            if(basedatos.server.some(item => item.id === key)){
-                kuzma = kuzma + ";in; ";
-            } else {
-                kuzma = kuzma + ":no: ";
-            }
-          kuzma = kuzma + key + " " + value.name +"\n";
-        });
+        if(message.author.id == "192007091169263616"){
+            message.client.guilds.forEach(function(value, key) {
+                if(basedatos.server.some(item => item.id === key)){
+                    kuzma = kuzma + ";in; ";
+                } else {
+                    kuzma = kuzma + ":no: ";
+                }
+              kuzma = kuzma + key + " " + value.name +"\n";
+            });
+        } else {
+            message.client.guilds.forEach(function(value, key) {
+                kuzma = kuzma + key + " " + value.name;
+                    if(message.guild.id === key){
+                        kuzma = kuzma + "this \n";
+                    } else {
+                        kuzma = kuzma + "\n";
+                    }
+            });
+        }
         kuzma = kuzma + "```";
         message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'chatlist')) {

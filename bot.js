@@ -87,13 +87,13 @@ client.on('message', message => {
             message.client.guilds.forEach(function(value, key) {
                 kuzma = kuzma + key + " " + value.name;
                     if(message.guild.id == value.id){
-                        kuzma = kuzma + "this \n";
+                        kuzma = kuzma + " aqui \n";
                     } else {
                         kuzma = kuzma + "\n";
                     }
             });
         }
-        kuzma = kuzma + message.guild.id + "```";
+        kuzma = kuzma + "```";
         message.channel.sendMessage(kuzma);
     } else if (message.content.startsWith(prefix + 'chatlist')) {
         let entrada = message.content.split(" ");

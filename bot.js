@@ -85,7 +85,7 @@ client.on('message', message => {
             });
         } else {
             message.client.guilds.forEach(function(value, key) {
-                kuzma = kuzma + key + " " + value.name;
+                kuzma = kuzma + " " + value.name;
                     if(message.guild.id == key){
                         kuzma = kuzma + " this \n";
                     } else {
@@ -101,6 +101,29 @@ client.on('message', message => {
         if(message.client.guilds.has(entrada[1])){
             kuzma = "```Ini\n [Lista de chats de " + message.client.guilds.get(entrada[1]).name + "]\n";
             message.client.guilds.get(entrada[1]).channels.filter(c => c.type === 'text').forEach(function(value, key) {
+                kuzma = kuzma + value.name;
+                if(value.permissionsFor(value.guild.me).has('SEND_MESSAGES')){
+                    kuzma = kuzma + " =";
+                    if(value.permissionsFor(value.guild.me).has('EMBED_LINKS')){
+                        kuzma = kuzma +'"'+key+'"\n';
+                    } else {
+                        kuzma = kuzma +'${'+key+'}\n';
+                    }
+                } else {
+                    kuzma = kuzma +'<'+key+'>\n';
+                }
+            });
+            kuzma = kuzma + "```";
+        } else {
+            kuzma = "no he encontrado ningún servidor con la ID "+ entrada[1];
+        }
+        message.channel.sendMessage(kuzma);
+    } else if (message.content.startsWith(prefix + 'talklist')) {
+        let entrada = message.content.split(" ");
+        let kuzma = "ERROR";
+        if(message.client.guilds.has(entrada[1])){
+            kuzma = "```Ini\n [Lista de chats para hablar en " + message.client.guilds.get(entrada[1]).name + "]\n";
+            message.client.guilds.get(entrada[1]).channels.filter(c => c.type === 'text' && c.permissionsFor(c.guild.me).has('SEND_MESSAGES') && c.permissionsFor(c.guild.me).has('VIEW_CHANNEL')).forEach(function(value, key) {
                 kuzma = kuzma + value.name;
                 if(value.permissionsFor(value.guild.me).has('SEND_MESSAGES')){
                     kuzma = kuzma + " =";

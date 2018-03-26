@@ -7,17 +7,16 @@ var prefix = 'm!';
 
 const autorole = require("./autoroles.json");
 client.on('message', message => {
-    /*let archat = autorole.roles.filter(er => er.chat == message.channel.id);
+    let archat = autorole.roles.filter(er => er.chat == message.channel.id);
     if (archat.length == 1){
-        message.channel.send("its okay");
+        
     } else if (archat.length > 1){
-        let errcoiciden = "**Error, se ha usado 2 veces la id de un chat en el autorole:**\n";
+        let errcoiciden = "**Error, se ha usado 2 veces la id del chat " + message.channel.name  + " en el autorole:**\n";
         archat.forEach(function(responsable) {
-            errcoiciden = errcoiciden + responsable.name + "\n";
+            errcoiciden += responsable.name + "\n";
         });
         message.guild.channels.get(autorole.logchat).send(errcoiciden);
     }
-    */
 });
 
 client.on('ready', () => {

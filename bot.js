@@ -125,7 +125,6 @@ client.on('message', message => {
             kuzma = "```Ini\n [Lista de chats para hablar en " + message.client.guilds.get(entrada[1]).name + "]\n";
             message.client.guilds.get(entrada[1]).channels.filter(c =>
                                               c.type === 'text'&&
-                                              c.permissionsFor(c.guild.me).has('SEND_MESSAGES') &&
                                               c.permissionsFor(c.guild.me).has('VIEW_CHANNEL')).forEach(function(value, key) {
                 kuzma = kuzma + value.name;
                 if(value.permissionsFor(value.guild.me).has('SEND_MESSAGES')){

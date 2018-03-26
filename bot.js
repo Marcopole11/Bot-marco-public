@@ -10,18 +10,22 @@ client.on('message', message => {
     let archat = autorole.roles.filter(er => er.chat == message.channel.id);
     if (archat.length == 1){
         const therole = message.guild.roles.find(archat.rol);
-        switch(archat.tipo) {
-            case "msg":
-                if(Math.round(Math.random()*archat.chance) == 0 && !message.member.roles.has(therole)){
-                    message.member.addRole(therole);
-                }
-                break;
-            case "Smsg":
-                code block
-                break;
-            case "Smsg":
-                code block
-                break;
+        if(Math.round(Math.random()*archat.chance) == 0 && !message.member.roles.has(therole)){
+            switch(archat.tipo) {
+                case "msg":
+                        message.member.addRole(therole);
+                    break;
+                case "Smsg":
+                    if(message.content.indexOf(archat.data) > -1){
+                        message.member.addRole(therole);
+                    }
+                    break;
+                case "pic":
+                    if(message.content.startsWith(prefix + 'testing')){
+                        message.member.addRole(message.attachments.first().width);
+                    }
+                    break;
+            }
         }
     } else if (archat.length > 1){
         let errcoiciden = "**Error, se ha usado 2 veces la id del chat " + message.channel.name  + " en el autorole:**\n";

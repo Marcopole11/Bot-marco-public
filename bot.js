@@ -123,7 +123,7 @@ client.on('message', message => {
         let kuzma = "ERROR";
         if(message.client.guilds.has(entrada[1])){
             kuzma = "```Ini\n [Lista de chats para hablar en " + message.client.guilds.get(entrada[1]).name + "]\n";
-            message.client.guilds.get(entrada[1]).channels.filter(c => c.type === 'text' && c.permissionsFor(c.guild.me).has('SEND_MESSAGES') && c.permissionsFor(c.guild.me).has('VIEW_CHANNEL')).forEach(function(value, key) {
+            message.client.guilds.get(entrada[1]).channels.filter(c => c.type === 'text' && c.permissionsFor(c.guild.me).has('SEND_MESSAGES')).forEach(function(value, key) {
                 kuzma = kuzma + value.name;
                 if(value.permissionsFor(value.guild.me).has('SEND_MESSAGES')){
                     kuzma = kuzma + " =";

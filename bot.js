@@ -3,11 +3,20 @@ const client = new Discord.Client();
 const basedatos = require("./principalDatabase.json");
 const fs = require("fs");
 let anadidos = JSON.parse(fs.readFileSync("./newservers.json", "utf8"));
+var prefix = 'm!';
+
+const autorole = require("./autoroles.json");
+client.on('message', message => {
+    if (message.content.startsWith(prefix + 'testing')) {
+        let archat = autorole.roles.filter(er => er.chat == message.channel.id);
+        message.channel.send(archat.length);
+    }
+});
 
 client.on('ready', () => {
     console.log('I am ready!');
 });
-var prefix = 'm!';
+
 var comandchat = "comandos"; var dialogchat = "canal-r37j";
 
 client.on('message', message => {

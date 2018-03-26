@@ -1,0 +1,25 @@
+{ "logchat" : "417453270873931806",
+  "roles" : [
+    {
+      "name" : "Programador",
+      "chat" : "427953366250029058",
+      "tipo" : "Smsg",
+      "chance" : "5",
+      "rol" : "testprogramador"
+    },
+    {
+      "name" : "Artista",
+      "chat" : "427953366250029058",
+      "tipo" : "pic",
+      "chance" : "3",
+      "rol" : "testartista"
+    },
+    {
+      "name" : "social",
+      "chat" : "427951076172627968",
+      "tipo" : "msg",
+      "chance" : "20",
+      "rol" : "testspamer",
+    }
+  ]
+}

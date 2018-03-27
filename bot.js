@@ -7,10 +7,10 @@ var prefix = 'm!';
 
 const autorole = require("./autoroles.json");
 client.on('message', message => {
-    let archat = autorole.roles.filter(er => er.chat == message.channel.id);
-    let seed = Math.round(Math.random()*1);
-    if (archat.length == 1){
-        if(seed == 0){
+    let arrchat = autorole.roles.filter(er => er.chat == message.channel.id);
+    if (arrchat.length == 1){
+        let archat = arrchat[0];
+        if(Math.round(Math.random()*archat.chance) == 0){
             switch(archat.tipo) {
                 case "msg":
                         message.channel.send(archat.rol);

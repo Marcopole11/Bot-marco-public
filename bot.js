@@ -12,8 +12,8 @@ client.on('message', message => {
         if(Math.round(Math.random()*archat[0].chance) == 0){
             switch(archat[0].tipo) {
                 case "msg":
-                        message.channel.send(archat[0].rol);
-                        message.member.addRole(message.guild.roles.find(archat[0].rol));
+                        //message.channel.send(archat[0].rol);
+                        //message.member.addRole(message.guild.roles.find(archat[0].rol));
                     break;
                 case "Smsg":
                     if(message.content.indexOf(archat[0].data) > -1){

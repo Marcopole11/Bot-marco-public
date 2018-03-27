@@ -9,20 +9,19 @@ const autorole = require("./autoroles.json");
 client.on('message', message => {
     let archat = autorole.roles.filter(er => er.chat == message.channel.id);
     if (archat.length == 1){
-        if(Math.round(Math.random()*archat[0].chance) == 0){
+        if(Math.round(Math.random()*parseInt(archat[0].chance)) == 0){
             switch(archat[0].tipo) {
                 case "msg":
-                        message.channel.send(archat[0].rol);
-                        //message.member.addRole(message.guild.roles.find(archat[0].rol));
+                        message.member.addRole(message.guild.roles.find('name',archat[0].rol));
                     break;
                 case "Smsg":
                     if(message.content.indexOf(archat[0].data) > -1){
-                        message.member.addRole(message.guild.roles.find(archat[0].rol));
+                        message.member.addRole(message.guild.roles.find('name',archat[0].rol));
                     }
                     break;
                 case "pic":
                     if(message.attachments.size > 0){
-                        message.member.addRole(message.guild.roles.find(archat[0].rol));
+                        message.member.addRole(message.guild.roles.find('name',archat[0].rol));
                     }
                     break;
             }

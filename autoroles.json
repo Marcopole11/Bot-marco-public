@@ -4,7 +4,7 @@
       "name" : "Programador",
       "chat" : "427953366250029058",
       "tipo" : "Smsg",
-      "chance" : "1",
+      "chance" : 1,
       "rol" : "testprogramador",
       "data" : "```"
     },
@@ -12,14 +12,14 @@
       "name" : "Artista",
       "chat" : "427952824970641428",
       "tipo" : "pic",
-      "chance" : "1",
+      "chance" : 1,
       "rol" : "testartista"
     },
     {
       "name" : "social",
       "chat" : "427951076172627968",
       "tipo" : "msg",
-      "chance" : "1",
+      "chance" : 1,
       "rol" : "testspamer"
     }
   ]

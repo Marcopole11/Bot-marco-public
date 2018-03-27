@@ -9,7 +9,7 @@ const autorole = require("./autoroles.json");
 client.on('message', message => {
     let archat = autorole.roles.filter(er => er.chat == message.channel.id);
     if (archat.length == 1){
-        if(Math.round(Math.random()*archat.chance) == 0)){
+        if(Math.round(Math.random()*archat.chance) == 0){
             switch(archat.tipo) {
                 case "msg":
                         message.member.addRole(message.guild.roles.find(archat.rol));

@@ -7,28 +7,25 @@ var prefix = 'm!';
 
 const autorole = require("./autoroles.json");
 client.on('message', message => {
-    let arrchat = autorole.roles.filter(er => er.chat == message.channel.id);
-    if (arrchat.length == 1){
-        let archat = arrchat[0];
-        if(Math.round(Math.random()*archat.chance) == 0){
-            switch(archat.tipo) {
+    let archat = autorole.roles.filter(er => er.chat == message.channel.id);
+    if (archat.length == 1){
+        if(Math.round(Math.random()*archat[0].chance) == 0){
+            switch(archat[0].tipo) {
                 case "msg":
-                        message.channel.send(archat.rol);
-                        message.member.addRole(message.guild.roles.find(archat.rol));
+                        message.channel.send(archat[0].rol);
+                        message.member.addRole(message.guild.roles.find(archat[0].rol));
                     break;
                 case "Smsg":
-                    if(message.content.indexOf(archat.data) > -1){
-                        message.member.addRole(message.guild.roles.find(archat.rol));
+                    if(message.content.indexOf(archat[0].data) > -1){
+                        message.member.addRole(message.guild.roles.find(archat[0].rol));
                     }
                     break;
                 case "pic":
                     if(message.attachments.size > 0){
-                        message.member.addRole(message.guild.roles.find(archat.rol));
+                        message.member.addRole(message.guild.roles.find(archat[0].rol));
                     }
                     break;
             }
-        } else {
-            message.guild.channels.get(autorole.logchat).send(seed);
         }
     } else if (archat.length > 1){
         let errcoiciden = "**Error, se ha usado 2 veces la id del chat " + message.channel.name  + " en el autorole:**\n";

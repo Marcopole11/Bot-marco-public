@@ -8,8 +8,9 @@ var prefix = 'm!';
 const autorole = require("./autoroles.json");
 client.on('message', message => {
     let archat = autorole.roles.filter(er => er.chat == message.channel.id);
+    let seed = Math.round(Math.random()*archat.chance);
     if (archat.length == 1){
-        if(Math.round(Math.random()*archat.chance) == 0){
+        if(seed == 0){
             switch(archat.tipo) {
                 case "msg":
                         message.channel.send(archat.rol);
@@ -26,6 +27,8 @@ client.on('message', message => {
                     }
                     break;
             }
+        } else {
+            message.guild.channels.get(autorole.logchat).send(seed);
         }
     } else if (archat.length > 1){
         let errcoiciden = "**Error, se ha usado 2 veces la id del chat " + message.channel.name  + " en el autorole:**\n";
